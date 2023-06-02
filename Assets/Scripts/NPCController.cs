@@ -16,6 +16,7 @@ public class NPCController : MonoBehaviour
     void Update()
     {
         // Implement Simple AI to Move towards the player
-       
+        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
     }
 }

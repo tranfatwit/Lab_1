@@ -20,6 +20,12 @@ public class CubeController : MonoBehaviour
             GameController.score++;
             // Destroy the cube
             Destroy(gameObject);
+        } 
+        else if (collision.gameObject.name == "Character") {
+            // Minus from NPC score when NPC collides with a cube
+            GameController.npcScore--;
+            // Destroy the cube
+            Destroy(gameObject);
         }
     }
 
