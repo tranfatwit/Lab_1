@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OculusSampleFramework;
 
-public class CubeController : MonoBehaviour
+public class CubeController : OVRGrabbable
 {
     private GameController scoreManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,13 @@ public class CubeController : MonoBehaviour
             // Destroy the cube
             Destroy(gameObject);
         }
+    }
+
+    //Override the base GrabBegin function
+    public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
+    {
+        base.GrabBegin(hand, grabPoint);
+        scoreManager.OnCubeGrabbed();   
     }
 
     // Update is called once per frame
